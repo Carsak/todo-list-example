@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7f275b9482fcc365aa40ba5365e16d92",
+    "content-hash": "7c877d2e5aab6269953e7659f648d6b3",
     "packages": [
         {
             "name": "pecee/simple-router",
@@ -2164,7 +2164,12 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": "~7.4.0",
+        "ext-pdo": "*",
+        "ext-pdo_sqlite": "*",
+        "ext-mbstring": "*"
+    },
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.4.0"
