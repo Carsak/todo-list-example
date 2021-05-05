@@ -4,6 +4,6 @@ namespace App\Model;
 
 class Admin
 {
-    private int $password = 123;
-    private string $username = 'admin';
+    public const PASSWORD = 123;
+    public const USERNAME = 'admin';
 }
