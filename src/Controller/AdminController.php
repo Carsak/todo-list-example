@@ -1,15 +1,31 @@
 <?php
+namespace App\Controller;
 
 use App\Model\Admin;
 
-class AdminControlller {
+class AdminController extends BaseController
+{
+    public function signIn()
+    {
+        $pleaseTryAgain = $_SESSION['admin']['incorrectCredentials'] ?? false;
+        unset($_SESSION['admin']);
 
-    public function signIn() {
-        $login = $_POST['login'];
-        $password = $_POST['password'];
+        return $this->render('admin/signin', ['pleaseTryAgain' => $pleaseTryAgain]);
+    }
 
-        if(Admin::PASSWORD === $password && Admin::USERNAME === $login) {
-            $_SESSION['admin']['isAuthorized'] = true;
+    public function authorize()
+    {
+        $login = trim($_POST['login']);
+        $password = (int) trim($_POST['password']);
+
+        $isCredentialsCorrect = Admin::PASSWORD === $password && Admin::USERNAME === $login;
+
+        if ($isCredentialsCorrect) {
+            $_SESSION['admin']['isAuthorized'] = $isCredentialsCorrect;
+            header('Location: /');
+        } else {
+            $_SESSION['admin']['incorrectCredentials'] = !$isCredentialsCorrect;
+            header('Location: /admin/signin');
         }
     }
 }
