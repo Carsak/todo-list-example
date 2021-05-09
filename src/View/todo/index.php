@@ -17,7 +17,9 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
 
-            <?php if (!$isAdmin) { ?>
+            <?php
+            /** @var bool $isAdmin */
+            if (!$isAdmin) { ?>
             <a href="/admin/signin">
                 <button type="button" class="btn btn-info">Sign in</button>
             </a>
